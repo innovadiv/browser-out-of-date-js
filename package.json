@@ -1,5 +1,5 @@
 {
-  "name": "browser-out-of-date-js",
+  "name": "browser-compatible",
   "version": "1.0.0",
   "description": "",
   "main": "src/browserCompatible.js",
