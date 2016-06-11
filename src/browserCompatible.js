@@ -78,8 +78,8 @@ export default function browserCompatible(rawConfig) {
   const config = {
     cacheResults: true,
     [IE]: 10,
-    [CHROME] :-5,
-    [FIREFOX]: -5,
+    [CHROME]: 27,
+    [FIREFOX]: 24,
     [OPERA]: 12,
     [SAFARI]: 7,
     [OTHER]: 0,
