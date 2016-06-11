@@ -5,10 +5,11 @@ A fully tested, simple module that determines if the user's browser fits their v
 npm install browser-compatible --save
 ```
 
+#### ES6
 ```
 import browserCompatible from 'browser-compatible';
 
-browserCompatible();
+browserCompatible(); // true or false
 ```
 
 ## Use Cases
