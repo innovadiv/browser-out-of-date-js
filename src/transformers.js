@@ -25,10 +25,8 @@ export function getIeTridentVersion(version) {
  * @param w
  * @returns {Number}
  */
-export function getIeVersion(version, w) {
-  const resolvedWindow = w || window;
-
-  if (version === 7 && resolvedWindow && resolvedWindow.XDomainRequest) {
+export function getIeVersion(version, window = window) {
+  if (version === 7 && window && window.XDomainRequest) {
     return 8;
   }
 
