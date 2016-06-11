@@ -22,10 +22,13 @@ export function getIeTridentVersion(version) {
 /**
  * If the IE version reports v7 and the scope contains "XDomainRequest", its really v8
  * @param version
+ * @param w
  * @returns {Number}
  */
-export function getIeVersion(version) {
-  if (version === 7 && window && window.XDomainRequest) {
+export function getIeVersion(version, w) {
+  const resolvedWindow = w || window;
+
+  if (version === 7 && resolvedWindow && resolvedWindow.XDomainRequest) {
     return 8;
   }
 
