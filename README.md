@@ -1,5 +1,5 @@
 # Browser out of date module
-A fully tested, simple module that determines if the user's browser fits their support matrix.
+A fully tested, simple module that determines if the user's browser fits their version support matrix.
 
 ```
 npm install browser-compatible --save
