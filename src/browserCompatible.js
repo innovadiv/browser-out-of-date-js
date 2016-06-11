@@ -66,7 +66,7 @@ export function interpretBrowser(userAgent) {
       }
     }
 
-    // nothing found, continue with no match
+    // continuation
     return matchFound;
   }, false);
 
