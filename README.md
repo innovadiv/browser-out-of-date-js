@@ -18,6 +18,9 @@ browserCompatible(); // true or false
 - You want a fully tested browser compatibility module that simply returns `true` or `false`.
 - You are hip.
 
+## @TODO
+- automate user agent JSON hydration with `[].slice.call(document.querySelectorAll('#content ul li'), 0).map(n => n.textContent.trim())` from pages like http://www.useragentstring.com/pages/Safari/
+
 ## License
 
 ```
