@@ -3,11 +3,14 @@
   "plugins": [
     "node"
   ],
+  "parser": "babel-eslint",
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
+    "strict": 0,
     "node/no-deprecated-api": "error",
     "node/no-missing-import": "error",
     "node/no-missing-require": "error",

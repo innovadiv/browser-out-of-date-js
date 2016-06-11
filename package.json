@@ -2,16 +2,27 @@
   "name": "browser-out-of-date-js",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.js",
+  "main": "src/browserCompatible.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "eslint 'src/**/*.js'"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "testFileExtensions": [
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ]
   },
   "keywords": [],
   "author": "Matt Lo <mlo@mattlo.io>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
     "babel-jest": "^12.1.0",
     "babel-plugin-syntax-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
