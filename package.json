@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/browserCompatible.js",
   "scripts": {
-    "test": "jest",
+    "test": "npm run lint && jest",
     "lint": "eslint 'src/**/*.js'"
   },
   "jest": {

@@ -1,5 +1,5 @@
 # Browser out of date module
-A fully tested, simple module that determines if the user's browser fits their version support matrix.
+A tested, exclude list driven module that determines if the user's browser fits their version support matrix.
 
 ```
 npm install browser-compatible --save
@@ -20,6 +20,7 @@ browserCompatible(); // true or false
 
 ## @TODO
 - automate user agent JSON hydration with `[].slice.call(document.querySelectorAll('#content ul li'), 0).map(n => n.textContent.trim())` from pages like http://www.useragentstring.com/pages/Safari/
+- add mobile agent versions
 
 ## License
 

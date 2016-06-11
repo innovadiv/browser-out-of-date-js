@@ -3,10 +3,13 @@ import {getIeTridentVersion, getIeVersion, getOldSafariVersion} from './transfor
 export const REGEXP_IE_TRIDENT_RV = /Trident.*rv:(\d+\.\d+)/i; // IE11
 export const REGEXP_IE_MSIE = /MSIE.(\d+\.\d+)(?!.*MSIE.(\d+\.\d+))/i; // IE /w compat inspection
 export const REGEXP_EDGE = /Edge.(\d+)/i; //
-export const REGEXP_OPERA = /OPR.(\d+\.\d+)/i;
+export const REGEXP_OPERA = /Opera.*Version.(\d+\.\d+)/i;
+export const REGEXP_OPR = /OPR.(\d+\.\d+)/i;
+export const REGEXP_OPERA_LEGACY = /Opera.(\d+\.?\d+)/i;
 export const REGEXP_CHROME = /Chrome.(\d+\.\d+)/i;
-export const REGEXP_FIREFOX = /Firefox.(\d+\.\d+)/i;
+export const REGEXP_FIREFOX = /Firefox(?:.|)(\d+\.\d+)/i;
 export const REGEXP_SAFARI = /Version.(\d+.\d+).{0,10}Safari/i;
+export const REGEXP_PROBLEM_BROWSERS = /bot|googlebot|facebook|slurp|wii|silk|blackberry|maxthon|maxton|mediapartners|dolfin|dolphin|adsbot|silk|android|phone|bingbot|google web preview|like firefox|chromeframe|seamonkey|opera mini|meego|netfront|moblin|maemo|arora|camino|flot|k-meleon|fennec|kazehakase|galeon|android|mobile|iphone|ipod|ipad|epiphany|konqueror|rekonq|symbian|webos|coolnovo|blackberry|bb10|RIM|PlayBook|PaleMoon|QupZilla|YaBrowser|Otter|Midori|qutebrowser/i;
 
 export const REGEXP_IE_TRIDENT_INTERPRET = /Trident.(\d+\.\d+)/i; // fixes user agent diffs
 export const REGEXP_SAFARI_INTERPRET = /Safari.(\d+)/i; // earlier safari has weird revisions
@@ -28,13 +31,17 @@ export function browser(...args) {
 }
 
 export function regExpBrowserMap() {
+  // order makes a difference (e.g.: opera has MSIE strings in it)
   return [
+    browser(OTHER, REGEXP_PROBLEM_BROWSERS),
+    browser(OPERA, REGEXP_OPERA),
+    browser(OPERA, REGEXP_OPERA_LEGACY),
+    browser(OPERA, REGEXP_OPR),
     browser(IE, REGEXP_IE_TRIDENT_RV),
     browser(IE, REGEXP_IE_MSIE, getIeVersion),
     browser(IE, REGEXP_IE_TRIDENT_INTERPRET, getIeTridentVersion),
     browser(EDGE, REGEXP_EDGE),
     browser(CHROME, REGEXP_CHROME),
-    browser(OPERA, REGEXP_OPERA),
     browser(FIREFOX, REGEXP_FIREFOX),
     browser(SAFARI, REGEXP_SAFARI),
     browser(SAFARI, REGEXP_SAFARI_INTERPRET, getOldSafariVersion)
@@ -48,9 +55,9 @@ export function interpretBrowser(userAgent) {
       const matches = userAgent.match(browser.regexp);
 
       // found matches
-      if (matches && matches[1]) {
+      if ((browser.name === OTHER && matches) || (matches && matches[1])) {
         // cast version string to float
-        let version = parseFloat(matches[1]);
+        let version = parseFloat(matches[1] || 0);
 
         // transform version if there's a post processor
         if (browser.transformVersion) {
