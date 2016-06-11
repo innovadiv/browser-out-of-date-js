@@ -1,7 +1,7 @@
 import {getIeTridentVersion, getIeVersion, getOldSafariVersion} from './transformers';
 
 export const REGEXP_IE_TRIDENT_RV = /Trident.*rv:(\d+\.\d+)/i; // IE11
-export const REGEXP_IE_MSIE = /MSIE.(\d+\.\d+)/i; // typical IE
+export const REGEXP_IE_MSIE = /MSIE.(\d+\.\d+)(?!.*MSIE.(\d+\.\d+))/i; // IE /w compat inspection
 export const REGEXP_EDGE = /Edge.(\d+)/i; //
 export const REGEXP_OPERA = /OPR.(\d+\.\d+)/i;
 export const REGEXP_CHROME = /Chrome.(\d+\.\d+)/i;
