@@ -1,4 +1,7 @@
 # Browser out of date module
+
+[![CircleCI](https://circleci.com/gh/mattlo/browser-out-of-date-js/tree/master.svg?style=shield)](https://circleci.com/gh/mattlo/browser-out-of-date-js/tree/master)
+
 A tested, exclude list driven module that determines if the user's browser fits their version support matrix.
 
 ```
